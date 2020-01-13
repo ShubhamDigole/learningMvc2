@@ -1,0 +1,36 @@
+﻿
+@model WebApplication1.Models.stuClass
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Users</title>
+
+    
+</head>
+<body>
+    <div>
+            @Model.FirstName <br />
+            @Model.LastName 
+    </div>
+
+    <div>
+        @{
+            int a = 10;
+            if (a > 10)
+            {
+    <p style="color:red">less than 10</p>
+            }
+            else
+            {
+        <p style="color:red">less than 10</p>
+                }
+            }
+    </div>
+</body>
+</html>

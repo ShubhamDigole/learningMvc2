@@ -1,0 +1,24 @@
+﻿@model WebApplication1.Models.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestView</title>
+</head>
+<body>
+    <div>
+       
+        <p> @Model.user.Ussername </p>
+        <p> @Model.user.Name </p>
+        <p> @Model.age </p>
+        <p style="color:@Model.salaryColor"> @Model.user.Salary </p>
+
+    </div>
+</body>
+</html>

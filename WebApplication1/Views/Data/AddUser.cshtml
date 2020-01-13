@@ -1,0 +1,73 @@
+﻿@model WebApplication1.Models.stuClass
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddUser</title>
+    <style>
+
+        h4 {
+            margin: 5px;
+            margin-left: 0px;
+            padding: 0px;
+            color: red;
+        }
+    </style>
+
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+    <!--
+        <form action="Submit" method="post">
+            <input type="text" name="FirstName" value="@Model.FirstName" />
+
+            <h4> @Html.ValidationMessageFor(x => x.FirstName) </h4>
+
+            <input type="text" name="LastName" value="@Model.LastName">
+
+            <h4> @Html.ValidationMessageFor(x => x.LastName) </h4>
+
+                <input type="submit" value="submit" />
+    </form>
+        -->
+    @using (Html.BeginForm("Submit", "Data", FormMethod.Post))
+    {
+        @Html.TextBoxFor(m => m.FirstName)
+        <h4> @Html.ValidationMessageFor(x => x.FirstName) </h4>
+        @Html.TextBoxFor(m => m.LastName)
+        <h4> @Html.ValidationMessageFor(x => x.LastName) </h4>
+        <input type="submit" value="submit" />  
+    }
+
+    <form>
+
+    </form>
+
+    <br />
+
+    <table id="students">
+        <tr>
+            <th>First Code</th>
+            <th>Last Name</th>
+        </tr>
+    </table>
+
+    <script language="javascript">
+
+        $.get("getAllValues", null, fetchData);
+        function fetchData(studentData) {
+            var tbl = $("#students");
+            for (var j = 0; j < studentData.length; j++) {
+                var rows = "<tr>" + "<td>" + studentData[j].firstName + "</td>" + "<td>" + studentData[j].lastName + "</td>" + "</tr>";
+                tbl.append(rows);
+            }
+            
+        }
+    </script>
+</body>
+</html>

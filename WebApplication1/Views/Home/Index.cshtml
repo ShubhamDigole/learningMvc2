@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+}
+<div>
+
+    <button asp-action="buttonTest" asp-controller="Home">
+        add data
+   
+
+    </button>
+    <p> @ViewBag.test</p>
+    <p> @ViewData["Name"]</p>
+</div>
