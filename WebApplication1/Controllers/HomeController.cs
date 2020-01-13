@@ -26,7 +26,7 @@ namespace WebApplication1.Controllers
         {
             TempData["anotherTest"] = DateTime.Now.ToString();
             ViewData["Name"] = "shubam";
-            return RedirectToAction("Privacy");
+            return Redirect("Data/AddUser");
         }
 
         public IActionResult Privacy()

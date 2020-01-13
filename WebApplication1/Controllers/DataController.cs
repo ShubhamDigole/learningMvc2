@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -78,6 +79,7 @@ namespace WebApplication1.Controllers
         public IActionResult getAllValues() //get respone in json format
         {
             List<stuClass> data = this.data.stuClasses.ToList<stuClass>();
+            Thread.Sleep(2000); 
             return Json(data);
         }
 
@@ -97,25 +99,19 @@ namespace WebApplication1.Controllers
         {
             //basic data sending
             stuClass obj = new stuClass();
-            obj.FirstName = Request.Form["FirstName"];
-            obj.LastName = Request.Form["LastName"];
+            obj.FirstName = Request.Form["firstName"] ;
+            obj.LastName = Request.Form["lastName"];
             
             if (ModelState.IsValid)
             {
-              
                 data.stuClasses.Add(obj);
                 data.SaveChanges();
             }
-
-
-            else { }
-            return View("AddUser", obj);
+            Thread.Sleep(1000);
+            return Json(obj);
 
         }
-        //    this code return obj if model objects names and ui names are same  
-        
-
-
+       
     }
 
 

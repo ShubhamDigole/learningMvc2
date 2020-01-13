@@ -22,34 +22,22 @@
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
-    <!--
-        <form action="Submit" method="post">
-            <input type="text" name="FirstName" value="@Model.FirstName" />
 
-            <h4> @Html.ValidationMessageFor(x => x.FirstName) </h4>
+    <form id="form1">
+        <input type="text" name="FirstName" id="firstName" value="@Model.FirstName" />
 
-            <input type="text" name="LastName" value="@Model.LastName">
-
-            <h4> @Html.ValidationMessageFor(x => x.LastName) </h4>
-
-                <input type="submit" value="submit" />
-    </form>
-        -->
-    @using (Html.BeginForm("Submit", "Data", FormMethod.Post))
-    {
-        @Html.TextBoxFor(m => m.FirstName)
         <h4> @Html.ValidationMessageFor(x => x.FirstName) </h4>
-        @Html.TextBoxFor(m => m.LastName)
+
+        <input type="text" name="LastName" id="lastName" value="@Model.LastName">
+
         <h4> @Html.ValidationMessageFor(x => x.LastName) </h4>
-        <input type="submit" value="submit" />  
-    }
 
-    <form>
-
+        <input type="button" value="submit" onclick="addData()" />
     </form>
+
 
     <br />
-
+    <p id="status"> Loading.....</p>
     <table id="students">
         <tr>
             <th>First Code</th>
@@ -60,14 +48,33 @@
     <script language="javascript">
 
         $.get("getAllValues", null, fetchData);
+
         function fetchData(studentData) {
+           
             var tbl = $("#students");
-            for (var j = 0; j < studentData.length; j++) {
-                var rows = "<tr>" + "<td>" + studentData[j].firstName + "</td>" + "<td>" + studentData[j].lastName + "</td>" + "</tr>";
+            if (studentData.length > 1) {
+                for (var j = 0; j < studentData.length; j++) {
+                    var rows = "<tr>" + "<td>" + studentData[j].firstName + "</td>" + "<td>" + studentData[j].lastName + "</td>" + "</tr>";
+                    console.log(studentData[j].firstName);
+                    tbl.append(rows);
+                }
+            }
+            else {
+                var rows = "<tr>" + "<td>" + studentData.firstName + "</td>" + "<td>" + studentData.lastName + "</td>" + "</tr>";
                 tbl.append(rows);
             }
-            
+            $("#status").text("");
         }
+
+        function addData() {
+            $("#status").text("Adding Data Please Wait");
+            console.log("btn working");
+            var frm = $("#form1").serialize();
+            console.log(frm);
+            $.post("Submit", frm, fetchData);
+            $("#firstName").val("");
+            $("#lastName").val("");
+            }
     </script>
 </body>
 </html>
