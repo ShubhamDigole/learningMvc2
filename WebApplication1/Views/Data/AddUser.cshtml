@@ -18,7 +18,8 @@
             color: red;
         }
     </style>
-
+    <script src="~/js/site2.js"></script>
+    <script src="~/js/site.js"></script>
     <script src="~/lib/jquery/dist/jquery.js"></script>
 </head>
 <body>
@@ -31,7 +32,7 @@
         <input type="text" name="LastName" id="lastName" value="@Model.LastName">
 
         <h4> @Html.ValidationMessageFor(x => x.LastName) </h4>
-
+        @Html.AntiForgeryToken();
         <input type="button" value="submit" onclick="addData()" />
     </form>
 

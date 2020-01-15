@@ -38,6 +38,7 @@ namespace WebApplication1.Controllers
 
         // POST: api/API
         [HttpPost]
+        [AutoValidateAntiforgeryToken]
         public stuClass Post()
         {
             stuClass obj = new stuClass();

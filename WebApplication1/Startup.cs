@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.DAL;
 using WebApplication1.Filters;
+using WebApplication1.Controllers;
+using System.Web.Optimization;
 
 namespace WebApplication1
 {
@@ -34,7 +36,7 @@ namespace WebApplication1
            });
 
             //services.AddDbContext<BloggingContext>(options => options.UseSqlServer(connection))
-
+            
             services.AddScoped<IclassInitializer, classInitializer>();
             //services.AddControllersWithViews();
             services.Configure<CookiePolicyOptions>(options =>
@@ -64,7 +66,7 @@ namespace WebApplication1
                 app.UseExceptionHandler("/Home/Error");
                 app.UseHsts();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
@@ -73,7 +75,7 @@ namespace WebApplication1
             {
                 routes.MapRoute(
                    name: "AddUser",
-                   template: "{controller=Data}/{action=Search}/{id?}");
+                   template: "{controller=Data}/{action=AddUser}/{id?}");
 
                 routes.MapRoute(
                     name: "Privacy",

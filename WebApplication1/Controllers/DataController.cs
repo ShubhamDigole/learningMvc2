@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using WebApplication1.DAL;
 using WebApplication1.Models;
 using WebApplication1.Filters;
+using WebApplication1.Controllers;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApplication1.Controllers
@@ -48,10 +49,10 @@ namespace WebApplication1.Controllers
 
 
     }
-
+    
     public class DataController : Controller
     {
-
+        Register
         classData data = null;
         //string val = Request.QueryString["TxtName"];
         public DataController(classData data)
@@ -68,7 +69,7 @@ namespace WebApplication1.Controllers
         public IActionResult AddUser()
         {
 
-            return View("", new stuClass());
+            return View("AddUser", new stuClass());
         }
 
         public IActionResult TestView()
@@ -97,7 +98,7 @@ namespace WebApplication1.Controllers
         }
 
         //  public IActionResult Submit([ModelBinder(BinderType = typeof(DataBinder))]stuClass obj)
-
+       
         public IActionResult Submit()
         {
             //basic data sending
@@ -120,7 +121,7 @@ namespace WebApplication1.Controllers
         public ActionResult Search()
         {
            // int i = Convert.ToInt32("Jayesh");
-            return View("shubham");
+            return View();
         }
 
 
