@@ -30,9 +30,10 @@ namespace WebApplication1.Controllers
 
         // GET: api/API/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(int id)
+        public List<stuClass> Get(string id)
         {
-            return "value";
+            List<stuClass> vals = this.data.stuClasses.Where(s => s.LastName == id).ToList();
+            return vals;
         }
 
         // POST: api/API

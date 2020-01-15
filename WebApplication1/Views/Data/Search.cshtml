@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Search</title>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+</head>
+<body>
+
+    <input type="text" id="searchValue" /> 
+    <button onclick="Search()"> Search </button>
+
+
+    <br />
+
+    <table id="usersTable">
+        <tr>
+            <th>User Code</th>
+            <th>User Name</th>
+        </tr>
+    </table>
+    <script language="javascript">
+
+        function Search() {
+            var key = $("#searchValue").val()
+            console.log(key);
+
+            $.get("api/APi/" + key, null, showData);
+            return 
+        }
+
+        function showData(students) {
+            var table = $("#usersTable");
+           // var tblHeader = "<tr> <th>  User Code </th> <th>  User Name  </th> </tr>";
+           //// table.replaceWith(tblHeader);
+            for (i = 0; i < students.length; i++) {
+                console.log(students);
+                var row = "<tr>" + "<td>" + students[i].firstName + "</td>" + "<td>" + students[i].lastName + "</td>" + "</tr>";
+                console.log(students[i].firstName);
+                table.append(row);
+               
+            }
+            alert("found " + students.length + " students");
+        }
+
+
+
+    </script>
+</body>
+</html>

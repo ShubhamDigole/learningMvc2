@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebApplication1.DAL;
+using WebApplication1.Filters;
 
 namespace WebApplication1
 {
@@ -44,7 +45,11 @@ namespace WebApplication1
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new DivideByZeroExceptionFilter());
+                options.Filters.Add(new TestingDataException());
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,7 +73,7 @@ namespace WebApplication1
             {
                 routes.MapRoute(
                    name: "AddUser",
-                   template: "{controller=Data}/{action=AddUser}/{id?}");
+                   template: "{controller=Data}/{action=Search}/{id?}");
 
                 routes.MapRoute(
                     name: "Privacy",

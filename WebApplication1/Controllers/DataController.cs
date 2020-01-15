@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using WebApplication1.DAL;
 using WebApplication1.Models;
-
+using WebApplication1.Filters;
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace WebApplication1.Controllers
 {
+
     public class DataBinder : IModelBinder
     {
 
@@ -48,8 +48,10 @@ namespace WebApplication1.Controllers
 
 
     }
+
     public class DataController : Controller
     {
+
         classData data = null;
         //string val = Request.QueryString["TxtName"];
         public DataController(classData data)
@@ -65,25 +67,26 @@ namespace WebApplication1.Controllers
 
         public IActionResult AddUser()
         {
-            return View("AddUser", new stuClass());
+
+            return View("", new stuClass());
         }
 
         public IActionResult TestView()
         {
-           
+
             UserModel u = getAllRecords();
-            UserViewModel evm = new UserViewModel(u);     
+            UserViewModel evm = new UserViewModel(u);
             return View(evm);
         }
 
         public IActionResult getAllValues() //get respone in json format
         {
             List<stuClass> data = this.data.stuClasses.ToList<stuClass>();
-            Thread.Sleep(2000); 
+            Thread.Sleep(2000);
             return Json(data);
         }
 
-       public UserModel getAllRecords()
+        public UserModel getAllRecords()
         {
             UserModel user = new UserModel();
             user.Ussername = "shubham";
@@ -99,9 +102,9 @@ namespace WebApplication1.Controllers
         {
             //basic data sending
             stuClass obj = new stuClass();
-            obj.FirstName = Request.Form["firstName"] ;
+            obj.FirstName = Request.Form["firstName"];
             obj.LastName = Request.Form["lastName"];
-            
+
             if (ModelState.IsValid)
             {
                 data.stuClasses.Add(obj);
@@ -111,7 +114,16 @@ namespace WebApplication1.Controllers
             return Json(obj);
 
         }
-       
+
+        // [TestingDataException]
+
+        public ActionResult Search()
+        {
+           // int i = Convert.ToInt32("Jayesh");
+            return View("shubham");
+        }
+
+
     }
 
 
