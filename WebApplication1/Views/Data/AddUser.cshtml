@@ -47,7 +47,7 @@
 
     <script language="javascript">
 
-        $.get("getAllValues", null, fetchData);
+        $.get("API/api", null, fetchData);
 
         function fetchData(studentData) {
            
@@ -71,7 +71,7 @@
             console.log("btn working");
             var frm = $("#form1").serialize();
             console.log(frm);
-            $.post("Submit", frm, fetchData);
+            $.post("API/api", frm, fetchData);
             $("#firstName").val("");
             $("#lastName").val("");
             }

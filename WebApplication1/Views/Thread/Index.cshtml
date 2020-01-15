@@ -1,0 +1,28 @@
+﻿@model  WebApplication1.Models.ThreadTestingModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    Start thread id = @ViewBag.start<br />
+    End thread id = @ViewBag.end
+    <p> Total Time Taken : @ViewBag.time</p>
+    <table border="1">
+        <tr>
+            <td>@Model.Thread1</td>
+            <td>@Model.Thread2</td>
+        </tr>
+        <tr>
+            <td>@Model.Thread3</td>
+            <td>@Model.Thread4</td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -67,8 +67,8 @@ namespace WebApplication1
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                   name: "Index",
-                   template: "{controller=Home}/{action=Index}/{id?}");
+                   name: "AddUser",
+                   template: "{controller=Data}/{action=AddUser}/{id?}");
 
                 routes.MapRoute(
                     name: "Privacy",
