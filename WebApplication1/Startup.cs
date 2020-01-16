@@ -37,7 +37,7 @@ namespace WebApplication1
 
             //services.AddDbContext<BloggingContext>(options => options.UseSqlServer(connection))
             
-            services.AddScoped<IclassInitializer, classInitializer>();
+          //  services.AddScoped<IclassInitializer, classInitializer>();
             //services.AddControllersWithViews();
             services.Configure<CookiePolicyOptions>(options =>
             {
@@ -49,7 +49,7 @@ namespace WebApplication1
 
             services.AddMvc(options =>
             {
-                options.Filters.Add(new DivideByZeroExceptionFilter());
+               /* options.Filters.Add(new DivideByZeroExceptionFilter());*/
                 options.Filters.Add(new TestingDataException());
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

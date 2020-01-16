@@ -52,7 +52,7 @@ namespace WebApplication1.Controllers
     
     public class DataController : Controller
     {
-        Register
+
         classData data = null;
         //string val = Request.QueryString["TxtName"];
         public DataController(classData data)
@@ -66,9 +66,10 @@ namespace WebApplication1.Controllers
             return View("Users", users);
         }
 
+        [TestingDataException]
         public IActionResult AddUser()
         {
-
+           
             return View("AddUser", new stuClass());
         }
 
@@ -82,7 +83,7 @@ namespace WebApplication1.Controllers
 
         public IActionResult getAllValues() //get respone in json format
         {
-            List<stuClass> data = this.data.stuClasses.ToList<stuClass>();
+            List<stuClass> data = this.data.Students.ToList<stuClass>();
             Thread.Sleep(2000);
             return Json(data);
         }
@@ -108,7 +109,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                data.stuClasses.Add(obj);
+                data.Students.Add(obj);
                 data.SaveChanges();
             }
             Thread.Sleep(1000);

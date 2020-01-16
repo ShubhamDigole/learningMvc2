@@ -24,7 +24,7 @@ namespace WebApplication1.Controllers
         public List<stuClass> Get()
         {
            
-            List<stuClass> data = this.data.stuClasses.ToList<stuClass>();
+            List<stuClass> data = this.data.Students.ToList<stuClass>();
             return data;
         }
 
@@ -32,7 +32,7 @@ namespace WebApplication1.Controllers
         [HttpGet("{id}", Name = "Get")]
         public List<stuClass> Get(string id)
         {
-            List<stuClass> vals = this.data.stuClasses.Where(s => s.LastName == id).ToList();
+            List<stuClass> vals = this.data.Students.Where(s => s.LastName == id).ToList();
             return vals;
         }
 
@@ -47,7 +47,7 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                data.stuClasses.Add(obj);
+                data.Students.Add(obj);
                 data.SaveChanges();
             }
             Thread.Sleep(1000);

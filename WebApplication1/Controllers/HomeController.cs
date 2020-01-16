@@ -7,8 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using WebApplication1.Models;
 
-using WebApplication1.DAL;
-using WebApplication1.Models;
+
 
 
 namespace WebApplication1.Controllers
@@ -16,8 +15,8 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IclassInitializer _repository;
-        public HomeController(ILogger<HomeController> logger, IclassInitializer repository)
+      
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
         }

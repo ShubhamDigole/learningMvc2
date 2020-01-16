@@ -22,10 +22,10 @@ namespace WebApplication1.DAL
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<stuClass>().ToTable("Students");
-
+            modelBuilder.Entity<Employee>().ToTable("Employees");
         }
 
-        public DbSet<stuClass> stuClasses { get; set; }
-
+        public DbSet<stuClass> Students { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }

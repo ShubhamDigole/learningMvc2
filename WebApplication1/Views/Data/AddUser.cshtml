@@ -47,7 +47,7 @@
     </table>
 
     <script language="javascript">
-
+        debugger;
         $.get("API/api", null, fetchData);
 
         function fetchData(studentData) {
@@ -55,12 +55,15 @@
             var tbl = $("#students");
             if (studentData.length > 1) {
                 for (var j = 0; j < studentData.length; j++) {
+                    console.log(studentData[j].lastName)
                     var rows = "<tr>" + "<td>" + studentData[j].firstName + "</td>" + "<td>" + studentData[j].lastName + "</td>" + "</tr>";
                     console.log(studentData[j].firstName);
+                    debugger;   
                     tbl.append(rows);
                 }
             }
             else {
+
                 var rows = "<tr>" + "<td>" + studentData.firstName + "</td>" + "<td>" + studentData.lastName + "</td>" + "</tr>";
                 tbl.append(rows);
             }

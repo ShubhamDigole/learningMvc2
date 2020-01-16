@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication1.Filters
 {
-    public class TestingDataException :IExceptionFilter
+    public class TestingDataException :ExceptionFilterAttribute,IExceptionFilter
     {
        
     public void OnException(ExceptionContext context)
